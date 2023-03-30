@@ -1,0 +1,4 @@
+# Simple pod configuration
+simplepod:
+  image: busybox
+  sleep: 30

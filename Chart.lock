@@ -1,0 +1,6 @@
+dependencies:
+- name: example-subchart-app
+  repository: file://subcharts/example-subchart-app
+  version: 0.1.0
+digest: sha256:de0364ed63fb9664acdf3c5dc557c091ca52424d1bf9a9fdd91f28c9af3caf9d
+generated: "2023-03-30T13:35:40.082351+02:00"

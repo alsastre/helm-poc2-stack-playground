@@ -1,0 +1,6 @@
+apiVersion: v2
+name: example-subchart-app
+description: An example of subchart to play with reusability and tags
+type: application
+version: 0.1.0
+appVersion: "0.0.0-POC2"

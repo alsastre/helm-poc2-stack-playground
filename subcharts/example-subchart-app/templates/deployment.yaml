@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-simpledeploy
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-simpledeploy
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-simpledeploy
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-simpledeploy
+        image: busybox
+        command:
+          - /bin/sh
+          - -c
+          - echo "Sleeping {{ .Values.sleep }}";sleep {{ .Values.sleep }};touch /tmp/hello.txt;echo "THE END. Sleep forever"; sleep 99999998
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        livenessProbe: # Simple liveness/readiness probe to emulate a real application starting
+          exec:
+            command:
+            - ls
+            - /tmp/hello.txt
+          initialDelaySeconds: {{ .Values.sleep }}
+          timeoutSeconds: 3
+          periodSeconds: 20
+        readinessProbe:
+          exec:
+            command:
+            - ls
+            - /tmp/hello.txt
+          initialDelaySeconds: {{ .Values.sleep }}
+          timeoutSeconds: 3
+          periodSeconds: 20

@@ -1,0 +1,10 @@
+apiVersion: v2
+name: poc2-jobs-playground
+description: A Helm chart for testing subcharts and other stack configurations
+type: application
+version: 0.1.0
+appVersion: "0.0.0-POC2"
+dependencies:
+  - name: example-subchart-app
+    repository: "file://subcharts/example-subchart-app"
+    version: "0.1.0"
